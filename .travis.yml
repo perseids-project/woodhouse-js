@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "v10.5.0"
+  - v10.5.0
 cache:
   directories:
   - node_modules
