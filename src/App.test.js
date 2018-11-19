@@ -11,7 +11,8 @@ it('renders without crashing', () => {
 it('renders title', () => {
   const { getByText } = render(<App />);
 
-  expect(getByText('Woodhouse English-Greek Dictionary (beta)')).toBeInTheDocument();
+  expect(getByText('English-Greek Dictionary')).toBeInTheDocument();
+  expect(getByText('A Vocabulary of the Attic Language')).toBeInTheDocument();
 });
 
 it('looks up a word', () => {
