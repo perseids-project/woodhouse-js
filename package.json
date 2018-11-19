@@ -1,9 +1,10 @@
 {
   "name": "woodhouse-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "homepage": "https://perseids-project.github.io/woodhouse-js/",
   "dependencies": {
+    "perseids-react-components": "^0.0.2",
     "add": "^2.0.6",
     "autoprefixer": "7.1.6",
     "babel-core": "6.26.0",
