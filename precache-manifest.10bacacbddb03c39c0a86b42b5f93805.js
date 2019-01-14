@@ -8,8 +8,8 @@ self.__precacheManifest = [
     "url": "/woodhouse/static/js/main.9fa04c16.chunk.js"
   },
   {
-    "revision": "84f4561a76570c5234ff",
-    "url": "/woodhouse/static/js/2.84f4561a.chunk.js"
+    "revision": "0ccd939a6ee2bcab1c4e",
+    "url": "/woodhouse/static/js/2.0ccd939a.chunk.js"
   },
   {
     "revision": "73e4f4d530a0fcb29f70",
@@ -20,11 +20,11 @@ self.__precacheManifest = [
     "url": "/woodhouse/static/css/main.e5e1830e.chunk.css"
   },
   {
-    "revision": "84f4561a76570c5234ff",
-    "url": "/woodhouse/static/css/2.4d4a360e.chunk.css"
+    "revision": "0ccd939a6ee2bcab1c4e",
+    "url": "/woodhouse/static/css/2.744a3455.chunk.css"
   },
   {
-    "revision": "45fc88b694a908d8b6a93458fafa2940",
+    "revision": "c7ff88e9cc714e0deb99c1c67b33a36a",
     "url": "/woodhouse/index.html"
   }
 ];
