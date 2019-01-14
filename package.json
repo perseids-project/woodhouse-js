@@ -21,6 +21,7 @@
     "react-testing-library": "^4.1.4"
   },
   "scripts": {
+    "deploy": "yarn deploy-github && yarn deploy-perseids",
     "predeploy-github": "yarn run build",
     "deploy-github": "yarn run cleanup && gh-pages -d build",
     "predeploy-perseids": "PUBLIC_URL='/woodhouse' yarn run build",
@@ -28,7 +29,7 @@
     "cleanup": "rm -rf node_modules/gh-pages/.cache",
     "build-dictionary": "node ./scripts/build-dictionary.js",
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
+    "build": "react-app-rewired build && cp build/index.html build/404.html",
     "lint": "eslint --ext=js --ext=jsx .",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-app-rewired eject"
