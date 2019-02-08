@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import './Loading.css';
+import './Loading.module.css';
 
 const Loading = ({ text }) => (
   <div className="mt-2">
