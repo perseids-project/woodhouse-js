@@ -13,7 +13,7 @@ The Woodhouse text used is based on
 
 ## Try it Out
 
-[https://perseids-project.github.io/woodhouse-js/](https://perseids-project.github.io/woodhouse-js/)
+[https://apps.perseids.org/woodhouse/](https://apps.perseids.org/woodhouse/)
 
 ### How to Use
 
