@@ -41,7 +41,7 @@ class Lookup extends Component {
     const { value } = event.target;
     const { history } = this.props;
 
-    history.push(`/${value}`);
+    history.push(`/l/${value}`);
   }
 
   renderEntries(word) {
@@ -56,8 +56,7 @@ class Lookup extends Component {
 
     return (
       <div className="mt-4">
-        {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
-        <input className="form-control mb-4" autoFocus type="text" value={word} onChange={this.handleChange} placeholder="Enter word..." aria-label="lookup" />
+        <input className="form-control mb-4" type="text" value={word} onChange={this.handleChange} placeholder="Enter word..." aria-label="lookup" />
         {this.renderEntries(word)}
       </div>
     );
