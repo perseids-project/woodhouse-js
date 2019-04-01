@@ -24,7 +24,7 @@ const renderCollapse = collapsed => (
   </Collapse>
 );
 
-class DummyNavbar extends Component {
+class PreloadNavbar extends Component {
   state = {
     collapsed: true,
   }
@@ -46,4 +46,4 @@ class DummyNavbar extends Component {
   }
 }
 
-export default DummyNavbar;
+export default PreloadNavbar;

@@ -3,12 +3,12 @@ import Loadable from 'react-loadable';
 import localForage from 'localforage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import Loading from './Loading';
-import Lookup from './Lookup';
-import Browse from './Browse';
-import Preface from './Preface';
-import Navbar from './Navbar';
-import DummyNavbar from './DummyNavbar';
+import Loading from '../Loading/Loading';
+import Lookup from '../Lookup/Lookup';
+import Browse from '../Browse/Browse';
+import Preface from '../Preface/Preface';
+import Navbar from '../Navbar/Navbar';
+import DummyNavbar from '../PreloadNavbar/PreloadNavbar';
 
 const DICTIONARY_VERSION = 'woodhouse-0.0.2';
 
@@ -66,7 +66,7 @@ const lookupDictionary = () => (
 );
 
 const WaitForDownload = Loadable({
-  loader: () => import('./lib/Dictionary').then(cacheDictionary),
+  loader: () => import('../../lib/Dictionary').then(cacheDictionary),
   loading: () => (
     <React.Fragment>
       <DummyNavbar />

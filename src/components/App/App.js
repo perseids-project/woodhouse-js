@@ -3,7 +3,7 @@ import { PerseidsFooter } from 'perseids-react-components';
 
 import 'perseids-react-components/build/css/index.css';
 
-import AsyncRouter from './AsyncRouter';
+import AsyncRouter from '../AsyncRouter/AsyncRouter';
 
 const App = () => (
   <React.Fragment>

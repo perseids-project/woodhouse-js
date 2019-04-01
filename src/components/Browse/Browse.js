@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Octicon, { ArrowUp, ArrowDown } from '@githubprimer/octicons-react';
 
-import Parser from './lib/Parser';
+import Parser from '../../lib/Parser';
 
 import './Browse.css';
 
