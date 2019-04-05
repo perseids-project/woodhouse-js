@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './Preface.css';
+import styles from './Preface.module.css';
 
 const Preface = () => (
-  <div className="preface-container">
+  <div className={`${styles.prefaceContainer}`}>
     <h6>
       S.C. WOODHOUSE, M.A. LATE SCHOLAR OF CHRIST CHURCH, OXFORD
     </h6>

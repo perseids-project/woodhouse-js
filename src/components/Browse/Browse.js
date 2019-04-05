@@ -5,7 +5,7 @@ import Octicon, { ArrowUp, ArrowDown } from '@githubprimer/octicons-react';
 
 import Parser from '../../lib/Parser';
 
-import './Browse.css';
+import styles from './Browse.module.css';
 
 const dictionaryPropType = PropTypes.shape({
   dictionary: PropTypes.object.isRequired,
@@ -26,6 +26,8 @@ const matchPropType = PropTypes.shape({
 
 const ucfirst = word => word.charAt(0).toUpperCase() + word.slice(1);
 
+const alternateBackground = index => (index % 2 ? styles.backgroundDark : '');
+
 const renderEntries = (entries) => {
   const first = entries.slice(0, Math.floor(entries.length / 2));
   const second = entries.slice(Math.floor(entries.length / 2), entries.length);
@@ -34,16 +36,16 @@ const renderEntries = (entries) => {
     <div className="row">
       <div className="col-xs-12 col-sm-6">
         {first.map(({ index, entry }) => {
-          const background = `background-${index % 2}`;
+          const background = alternateBackground(index);
 
-          return <p className={`text-center entry-paragraph ${background}`} key={entry}><Link to={`/l/${entry}`}>{ucfirst(entry)}</Link></p>;
+          return <p className={`text-center ${styles.entryParagraph} ${background}`} key={entry}><Link to={`/l/${entry}`}>{ucfirst(entry)}</Link></p>;
         })}
       </div>
       <div className="col-6 d-none d-sm-block">
         {second.map(({ index, entry }) => {
-          const background = `background-${index % 2}`;
+          const background = alternateBackground(index);
 
-          return <p className={`text-center entry-paragraph ${background}`} key={entry}><Link to={`/l/${entry}`}>{ucfirst(entry)}</Link></p>;
+          return <p className={`text-center ${styles.entryParagraph} ${background}`} key={entry}><Link to={`/l/${entry}`}>{ucfirst(entry)}</Link></p>;
         })}
       </div>
     </div>
@@ -71,11 +73,11 @@ const renderAlphabet = (divisions, key) => {
   }
 
   return (
-    <div className="alphabet-container">
+    <div className={`${styles.alphabetContainer}`}>
       {rows.map(({ ii, row }) => (
-        <div className="alphabet-btn-group btn-group pb-1" role="group" aria-label="alphabet" key={`${key}-row-${ii}`}>
+        <div className={`${styles.alphabetBtnGroup} btn-group pb-1`} role="group" aria-label="alphabet" key={`${key}-row-${ii}`}>
           {row.map(letter => (
-            <Link to={`/b/${letter}`} className="btn btn-secondary alphabet-letter" key={`${key}-${letter}`}>{letter}</Link>
+            <Link to={`/b/${letter}`} className={`btn btn-secondary ${styles.alphabetLetter}`} key={`${key}-${letter}`}>{letter}</Link>
           ))}
         </div>
       ))}
