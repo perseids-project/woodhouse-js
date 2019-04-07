@@ -1,0 +1,21 @@
+.backgroundDark {
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.entryParagraph {
+  margin-bottom: 0;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.alphabetContainer {
+  width: 100%;
+}
+
+.alphabetBtnGroup {
+  width: 100%;
+}
+
+.alphabetLetter {
+  flex: 1 1 0!important;
+}
