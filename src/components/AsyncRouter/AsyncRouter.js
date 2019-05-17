@@ -9,38 +9,46 @@ import Browse from '../Browse/Browse';
 import Preface from '../Preface/Preface';
 import Navbar from '../Navbar/Navbar';
 import DummyNavbar from '../PreloadNavbar/PreloadNavbar';
+import I18n from '../I18n';
 
 const DICTIONARY_VERSION = 'woodhouse-0.0.2';
+
+const base = '/:locale(en|fr)?';
 
 const Router = ({ basename, dictionary }) => (
   <BrowserRouter basename={basename}>
     <React.Fragment>
       <Switch>
-        <Route path="/(l|b)/:word?" component={Navbar} />
-        <Route path="*" component={Navbar} />
+        <Route path={`${base}/(l|b)/:word?`} component={Navbar} />
+        <Route path={`${base}*`} component={Navbar} />
       </Switch>
       <div className="container text-center">
-        <header>
-          <h1 className="h3 pt-4 mb-1 font-weight-normal">
-            English-Greek Dictionary
-          </h1>
-          <h4 className="h5 mb-2 font-weight-normal">
-            <em>
-              A Vocabulary of the Attic Language
-            </em>
-          </h4>
-          <h5 className="h5 mb-3 font-weight-normal">
-            S.C. Woodhouse
-          </h5>
-        </header>
+        <Route
+          path={base}
+          render={() => (
+            <header>
+              <h1 className="h3 pt-4 mb-1 font-weight-normal">
+                <I18n t="header.title" />
+              </h1>
+              <h4 className="h5 mb-2 font-weight-normal">
+                <em>
+                  <I18n t="header.subtitle" />
+                </em>
+              </h4>
+              <h5 className="h5 mb-3 font-weight-normal">
+                <I18n t="header.author" />
+              </h5>
+            </header>
+          )}
+        />
         <main>
           <div className="mb-4">
             <Switch>
-              <Route exact path="/" render={props => <Lookup {...props} dictionary={dictionary} />} />
-              <Route exact path="/l/:word?" render={props => <Lookup {...props} dictionary={dictionary} />} />
-              <Route exact path="/b/:word?" render={props => <Browse {...props} dictionary={dictionary} />} />
-              <Route exact path="/p/preface" component={Preface} />
-              <Route exact path="/:word?" render={props => <Lookup {...props} dictionary={dictionary} />} />
+              <Route exact path={`${base}`} render={props => <Lookup {...props} dictionary={dictionary} />} />
+              <Route exact path={`${base}/l/:word?`} render={props => <Lookup {...props} dictionary={dictionary} />} />
+              <Route exact path={`${base}/b/:word?`} render={props => <Browse {...props} dictionary={dictionary} />} />
+              <Route exact path={`${base}/p/preface`} component={Preface} />
+              <Route exact path={`${base}/:word?`} render={props => <Lookup {...props} dictionary={dictionary} />} />
             </Switch>
           </div>
         </main>
@@ -71,26 +79,32 @@ const WaitForDownload = Loadable({
     <React.Fragment>
       <DummyNavbar />
       <div className="container text-center">
-        <header>
-          <h1 className="h3 pt-4 mb-1 font-weight-normal">
-            English-Greek Dictionary
-          </h1>
-          <h4 className="h5 mb-2 font-weight-normal">
-            <em>
-              A Vocabulary of the Attic Language
-            </em>
-          </h4>
-          <h5 className="h5 mb-3 font-weight-normal">
-            S.C. Woodhouse
-          </h5>
-        </header>
+        <BrowserRouter>
+          <Route
+            path={base}
+            render={() => (
+              <header>
+                <h1 className="h3 pt-4 mb-1 font-weight-normal">
+                  <I18n t="header.title" />
+                </h1>
+                <h4 className="h5 mb-2 font-weight-normal">
+                  <em>
+                    <I18n t="header.subtitle" />
+                  </em>
+                </h4>
+                <h5 className="h5 mb-3 font-weight-normal">
+                  <I18n t="header.author" />
+                </h5>
+              </header>
+            )}
+          />
+        </BrowserRouter>
         <main>
           <Loading text="Downloading dictionary..." />
         </main>
       </div>
     </React.Fragment>
   ),
-
   render(dictionary, props) {
     return <Router {...props} dictionary={dictionary} />;
   },
@@ -102,19 +116,26 @@ const AsyncRouter = Loadable({
     <React.Fragment>
       <DummyNavbar />
       <div className="container text-center">
-        <header>
-          <h1 className="h3 pt-4 mb-1 font-weight-normal">
-            English-Greek Dictionary
-          </h1>
-          <h4 className="h5 mb-2 font-weight-normal">
-            <em>
-              A Vocabulary of the Attic Language
-            </em>
-          </h4>
-          <h5 className="h5 mb-3 font-weight-normal">
-            S.C. Woodhouse
-          </h5>
-        </header>
+        <BrowserRouter>
+          <Route
+            path={base}
+            render={() => (
+              <header>
+                <h1 className="h3 pt-4 mb-1 font-weight-normal">
+                  <I18n t="header.title" />
+                </h1>
+                <h4 className="h5 mb-2 font-weight-normal">
+                  <em>
+                    <I18n t="header.subtitle" />
+                  </em>
+                </h4>
+                <h5 className="h5 mb-3 font-weight-normal">
+                  <I18n t="header.author" />
+                </h5>
+              </header>
+            )}
+          />
+        </BrowserRouter>
         <main>
           <Loading text="Loading dictionary from cache..." />
         </main>
