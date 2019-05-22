@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
 import Parser from '../../lib/Parser';
 
 const dictionaryPropType = PropTypes.shape({
@@ -40,8 +39,11 @@ class Lookup extends Component {
   handleChange(event) {
     const { value } = event.target;
     const { history } = this.props;
+    const { match } = this.props;
+    const { locale } = match.params;
+    const base = locale ? `/${locale}` : '';
 
-    history.push(`/l/${value}`);
+    history.push(`${base}/l/${value}`);
   }
 
   renderEntries(word) {
