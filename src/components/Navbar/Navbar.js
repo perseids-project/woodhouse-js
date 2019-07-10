@@ -1,16 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { PerseidsHeader } from 'perseids-react-components';
 import { NavbarToggler, Collapse } from 'reactstrap';
 import { NavLink } from 'react-router-i18n';
 
-import I18n from '../I18n';
+import { matchType } from '../../lib/types';
 
-const matchPropType = PropTypes.shape({
-  params: PropTypes.shape({
-    word: PropTypes.string,
-  }).isRequired,
-});
+import I18n from '../I18n';
 
 const renderCollapse = (collapsed, word) => (
   <Collapse isOpen={!collapsed} navbar>
@@ -36,7 +31,7 @@ const renderCollapse = (collapsed, word) => (
 
 class Navbar extends Component {
   static propTypes = {
-    match: matchPropType.isRequired,
+    match: matchType.isRequired,
   }
 
   state = {

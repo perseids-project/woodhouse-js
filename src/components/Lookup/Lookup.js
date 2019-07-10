@@ -1,29 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import Parser from '../../lib/Parser';
 
-const dictionaryPropType = PropTypes.shape({
-  dictionary: PropTypes.object.isRequired,
-  exact: PropTypes.object.isRequired,
-  greek: PropTypes.object.isRequired,
-  latin: PropTypes.object.isRequired,
-});
-
-const historyPropType = PropTypes.shape({
-  push: PropTypes.func.isRequired,
-});
-
-const matchPropType = PropTypes.shape({
-  params: PropTypes.shape({
-    word: PropTypes.string,
-  }).isRequired,
-});
+import { dictionaryType, historyType, matchType } from '../../lib/types';
 
 class Lookup extends Component {
   static propTypes = {
-    dictionary: dictionaryPropType.isRequired,
-    history: historyPropType.isRequired,
-    match: matchPropType.isRequired,
+    dictionary: dictionaryType.isRequired,
+    history: historyType.isRequired,
+    match: matchType.isRequired,
   }
 
   constructor(props) {

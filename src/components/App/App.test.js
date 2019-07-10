@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from 'react-testing-library';
+import { render, fireEvent } from '@testing-library/react';
 
 import App from './App';
 
@@ -21,8 +21,7 @@ it('looks up a word', () => {
 
   expect(window.location.pathname).toEqual('/');
 
-  lookupNode.value = 'plinthos';
-  fireEvent.change(lookupNode);
+  fireEvent.change(lookupNode, { target: { value: 'plinthos' } });
 
   expect(window.location.pathname).toEqual('/l/plinthos');
   expect(getByText('πλίνθος, ἡ, brick')).toBeInTheDocument();

@@ -1,7 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Loadable from 'react-loadable';
 import localForage from 'localforage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import { dictionaryType } from '../../lib/types';
 
 import Loading from '../Loading/Loading';
 import Lookup from '../Lookup/Lookup';
@@ -56,6 +59,11 @@ const Router = ({ basename, dictionary }) => (
     </React.Fragment>
   </BrowserRouter>
 );
+
+Router.propTypes = {
+  basename: PropTypes.string.isRequired,
+  dictionary: dictionaryType.isRequired,
+};
 
 const cacheDictionary = (loaded) => {
   const dictionary = loaded.default;
