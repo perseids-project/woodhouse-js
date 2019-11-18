@@ -5,5 +5,5 @@ import AsyncRouter from './AsyncRouter';
 
 it('renders without crashing', () => {
   const div = window.document.createElement('div');
-  render(<AsyncRouter />, div);
+  render(<AsyncRouter basename="/" />, div);
 });

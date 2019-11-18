@@ -20,7 +20,7 @@ const base = '/:locale(en|fr)?';
 
 const Router = ({ basename, dictionary }) => (
   <BrowserRouter basename={basename}>
-    <React.Fragment>
+    <>
       <Switch>
         <Route path={`${base}/(l|b)/:word?`} component={Navbar} />
         <Route path={`${base}*`} component={Navbar} />
@@ -47,16 +47,16 @@ const Router = ({ basename, dictionary }) => (
         <main>
           <div className="mb-4">
             <Switch>
-              <Route exact path={`${base}`} render={props => <Lookup {...props} dictionary={dictionary} />} />
-              <Route exact path={`${base}/l/:word?`} render={props => <Lookup {...props} dictionary={dictionary} />} />
-              <Route exact path={`${base}/b/:word?`} render={props => <Browse {...props} dictionary={dictionary} />} />
+              <Route exact path={`${base}`} render={(props) => <Lookup {...props} dictionary={dictionary} />} />
+              <Route exact path={`${base}/l/:word?`} render={(props) => <Lookup {...props} dictionary={dictionary} />} />
+              <Route exact path={`${base}/b/:word?`} render={(props) => <Browse {...props} dictionary={dictionary} />} />
               <Route exact path={`${base}/p/preface`} component={Preface} />
-              <Route exact path={`${base}/:word?`} render={props => <Lookup {...props} dictionary={dictionary} />} />
+              <Route exact path={`${base}/:word?`} render={(props) => <Lookup {...props} dictionary={dictionary} />} />
             </Switch>
           </div>
         </main>
       </div>
-    </React.Fragment>
+    </>
   </BrowserRouter>
 );
 
@@ -74,7 +74,7 @@ const cacheDictionary = (loaded) => {
 };
 
 const lookupDictionary = () => (
-  localForage.getItem(DICTIONARY_VERSION).then(d => (
+  localForage.getItem(DICTIONARY_VERSION).then((d) => (
     { success: !!d, dictionary: d }
   )).catch(() => (
     { success: false }
@@ -84,7 +84,7 @@ const lookupDictionary = () => (
 const WaitForDownload = Loadable({
   loader: () => import('../../lib/Dictionary').then(cacheDictionary),
   loading: () => (
-    <React.Fragment>
+    <>
       <DummyNavbar />
       <div className="container text-center">
         <BrowserRouter>
@@ -111,7 +111,7 @@ const WaitForDownload = Loadable({
           <Loading text="Downloading dictionary..." />
         </main>
       </div>
-    </React.Fragment>
+    </>
   ),
   render(dictionary, props) {
     return <Router {...props} dictionary={dictionary} />;
@@ -121,7 +121,7 @@ const WaitForDownload = Loadable({
 const AsyncRouter = Loadable({
   loader: lookupDictionary,
   loading: () => (
-    <React.Fragment>
+    <>
       <DummyNavbar />
       <div className="container text-center">
         <BrowserRouter>
@@ -148,7 +148,7 @@ const AsyncRouter = Loadable({
           <Loading text="Loading dictionary from cache..." />
         </main>
       </div>
-    </React.Fragment>
+    </>
   ),
   render(loaded, props) {
     if (loaded.success) {

@@ -8,9 +8,9 @@ import { dictionaryType, historyType, matchType } from '../../lib/types';
 
 import styles from './Browse.module.css';
 
-const ucfirst = word => word.charAt(0).toUpperCase() + word.slice(1);
+const ucfirst = (word) => word.charAt(0).toUpperCase() + word.slice(1);
 
-const alternateBackground = index => (index % 2 ? styles.backgroundDark : '');
+const alternateBackground = (index) => (index % 2 ? styles.backgroundDark : '');
 
 const renderEntries = (entries) => {
   const first = entries.slice(0, Math.floor(entries.length / 2));
@@ -60,7 +60,7 @@ const renderAlphabet = (divisions, key) => {
     <div className={`${styles.alphabetContainer}`}>
       {rows.map(({ ii, row }) => (
         <div className={`${styles.alphabetBtnGroup} btn-group pb-1`} role="group" aria-label="alphabet" key={`${key}-row-${ii}`}>
-          {row.map(letter => (
+          {row.map((letter) => (
             <Link to={`/b/${letter}`} className={`btn btn-secondary ${styles.alphabetLetter}`} key={`${key}-${letter}`}>{letter}</Link>
           ))}
         </div>
@@ -76,12 +76,6 @@ const renderAlphabetMedium = () => renderAlphabet(2, 'medium');
 const renderAlphabetSmall = () => renderAlphabet(3, 'small');
 
 class Browse extends Component {
-  static propTypes = {
-    dictionary: dictionaryType.isRequired,
-    history: historyType.isRequired,
-    match: matchType.isRequired,
-  }
-
   constructor(props) {
     super(props);
 
@@ -153,5 +147,12 @@ class Browse extends Component {
     );
   }
 }
+
+Browse.propTypes = {
+  dictionary: dictionaryType.isRequired,
+  history: historyType.isRequired,
+  match: matchType.isRequired,
+};
+
 
 export default Browse;

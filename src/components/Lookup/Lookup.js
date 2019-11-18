@@ -5,12 +5,6 @@ import Parser from '../../lib/Parser';
 import { dictionaryType, historyType, matchType } from '../../lib/types';
 
 class Lookup extends Component {
-  static propTypes = {
-    dictionary: dictionaryType.isRequired,
-    history: historyType.isRequired,
-    match: matchType.isRequired,
-  }
-
   constructor(props) {
     super(props);
 
@@ -34,7 +28,7 @@ class Lookup extends Component {
   renderEntries(word) {
     const entries = this.parser.lookup(word);
 
-    return entries.map(entry => <p className="text-left" key={entry.headword} dangerouslySetInnerHTML={{ __html: entry.definition }} />); // eslint-disable-line react/no-danger
+    return entries.map((entry) => <p className="text-left" key={entry.headword} dangerouslySetInnerHTML={{ __html: entry.definition }} />); // eslint-disable-line react/no-danger
   }
 
   render() {
@@ -49,5 +43,11 @@ class Lookup extends Component {
     );
   }
 }
+
+Lookup.propTypes = {
+  dictionary: dictionaryType.isRequired,
+  history: historyType.isRequired,
+  match: matchType.isRequired,
+};
 
 export default Lookup;

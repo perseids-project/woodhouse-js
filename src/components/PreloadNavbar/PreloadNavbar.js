@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { PerseidsHeader } from 'perseids-react-components';
 import { NavbarToggler, Collapse } from 'reactstrap';
 
-const renderCollapse = collapsed => (
+const renderCollapse = (collapsed) => (
   <Collapse isOpen={!collapsed} navbar>
     <ul className="navbar-nav mr-auto">
       <li className="nav-item">
@@ -25,12 +25,16 @@ const renderCollapse = collapsed => (
 );
 
 class PreloadNavbar extends Component {
-  state = {
-    collapsed: true,
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      collapsed: true,
+    };
   }
 
   toggleNavbar = () => {
-    this.setState(prevState => ({ collapsed: !prevState.collapsed }));
+    this.setState((prevState) => ({ collapsed: !prevState.collapsed }));
   }
 
   render() {

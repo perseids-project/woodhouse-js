@@ -30,16 +30,16 @@ const renderCollapse = (collapsed, word) => (
 );
 
 class Navbar extends Component {
-  static propTypes = {
-    match: matchType.isRequired,
-  }
+  constructor(props) {
+    super(props);
 
-  state = {
-    collapsed: true,
+    this.state = {
+      collapsed: true,
+    };
   }
 
   toggleNavbar = () => {
-    this.setState(prevState => ({ collapsed: !prevState.collapsed }));
+    this.setState((prevState) => ({ collapsed: !prevState.collapsed }));
   }
 
   render() {
@@ -56,5 +56,10 @@ class Navbar extends Component {
     );
   }
 }
+
+Navbar.propTypes = {
+  match: matchType.isRequired,
+};
+
 
 export default Navbar;
