@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Octicon, { ArrowUp, ArrowDown } from '@githubprimer/octicons-react';
+import Octicon, { ArrowUp, ArrowDown } from '@primer/octicons-react';
 
 import Parser from '../../lib/Parser';
 
@@ -116,7 +116,7 @@ class Browse extends Component {
       <div className="mt-4">
         <div className="row mb-2 mt-2">
           <div className="col-8 pr-0">
-            <input className="form-control" type="text" value={word} onChange={this.handleChange} placeholder="Enter word..." aria-label="lookup" />
+            <input className="form-control" type="text" value={word} onChange={this.handleChange} placeholder="Enter word ..." aria-label="lookup" />
           </div>
           <div className="col-2 pr-1">
             <Link to={`/b/${previous}`} className="btn btn-primary btn-block">

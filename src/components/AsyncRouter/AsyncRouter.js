@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Loadable from 'react-loadable';
 import localForage from 'localforage';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
@@ -68,95 +67,78 @@ Router.propTypes = {
 const cacheDictionary = (loaded) => {
   const dictionary = loaded.default;
 
-  localForage.clear().then(() => localForage.setItem(DICTIONARY_VERSION, dictionary));
+  localForage.setItem(DICTIONARY_VERSION, dictionary);
 
   return dictionary;
 };
 
-const lookupDictionary = () => (
-  localForage.getItem(DICTIONARY_VERSION).then((d) => (
-    { success: !!d, dictionary: d }
-  )).catch(() => (
-    { success: false }
-  ))
-);
+class AsyncRouter extends Component {
+  constructor(props) {
+    super(props);
 
-const WaitForDownload = Loadable({
-  loader: () => import('../../lib/Dictionary').then(cacheDictionary),
-  loading: () => (
-    <>
-      <DummyNavbar />
-      <div className="container text-center">
-        <BrowserRouter>
-          <Route
-            path={base}
-            render={() => (
-              <header>
-                <h1 className="h3 pt-4 mb-1 font-weight-normal">
-                  <I18n t="header.title" />
-                </h1>
-                <h4 className="h5 mb-2 font-weight-normal">
-                  <em>
-                    <I18n t="header.subtitle" />
-                  </em>
-                </h4>
-                <h5 className="h5 mb-3 font-weight-normal">
-                  <I18n t="header.author" />
-                </h5>
-              </header>
-            )}
-          />
-        </BrowserRouter>
-        <main>
-          <Loading text="Downloading dictionary..." />
-        </main>
-      </div>
-    </>
-  ),
-  render(dictionary, props) {
-    return <Router {...props} dictionary={dictionary} />;
-  },
-});
+    this.state = {
+      loadingText: 'Loading dictionary from cache...',
+      dictionary: null,
+    };
+  }
 
-const AsyncRouter = Loadable({
-  loader: lookupDictionary,
-  loading: () => (
-    <>
-      <DummyNavbar />
-      <div className="container text-center">
-        <BrowserRouter>
-          <Route
-            path={base}
-            render={() => (
-              <header>
-                <h1 className="h3 pt-4 mb-1 font-weight-normal">
-                  <I18n t="header.title" />
-                </h1>
-                <h4 className="h5 mb-2 font-weight-normal">
-                  <em>
-                    <I18n t="header.subtitle" />
-                  </em>
-                </h4>
-                <h5 className="h5 mb-3 font-weight-normal">
-                  <I18n t="header.author" />
-                </h5>
-              </header>
-            )}
-          />
-        </BrowserRouter>
-        <main>
-          <Loading text="Loading dictionary from cache..." />
-        </main>
-      </div>
-    </>
-  ),
-  render(loaded, props) {
-    if (loaded.success) {
-      return <Router {...props} dictionary={loaded.dictionary} />;
+  componentDidMount() {
+    localForage.getItem(DICTIONARY_VERSION).then((dictionary) => {
+      if (dictionary) {
+        this.setState({ dictionary });
+      } else {
+        this.setState({ loadingText: 'Downloading dictionary...' }, this.asyncImport);
+      }
+    });
+  }
+
+  asyncImport() {
+    import('../../lib/Dictionary').then(cacheDictionary).then((dictionary) => {
+      this.setState({ dictionary });
+    });
+  }
+
+  render() {
+    const {
+      loadingText,
+      dictionary,
+    } = this.state;
+
+    if (dictionary === null) {
+      return (
+        <>
+          <DummyNavbar />
+          <div className="container text-center">
+            <BrowserRouter>
+              <Route
+                path={base}
+                render={() => (
+                  <header>
+                    <h1 className="h3 pt-4 mb-1 font-weight-normal">
+                      <I18n t="header.title" />
+                    </h1>
+                    <h4 className="h5 mb-2 font-weight-normal">
+                      <em>
+                        <I18n t="header.subtitle" />
+                      </em>
+                    </h4>
+                    <h5 className="h5 mb-3 font-weight-normal">
+                      <I18n t="header.author" />
+                    </h5>
+                  </header>
+                )}
+              />
+            </BrowserRouter>
+            <main>
+              <Loading text={loadingText} />
+            </main>
+          </div>
+        </>
+      );
     }
 
-    return <WaitForDownload {...props} />;
-  },
-});
+    return <Router {...this.props} dictionary={dictionary} />;
+  }
+}
 
 export default AsyncRouter;
