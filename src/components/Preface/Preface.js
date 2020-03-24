@@ -60,7 +60,7 @@ const Preface = () => (
         {' '}
         Greek Verbs
       </i>
-    , and, above and before all, Liddell and Scott.
+      , and, above and before all, Liddell and Scott.
     </p>
     <p>
       Mistakes in orthography and accentuation are, I fear, inevitable in a work this size; but the
