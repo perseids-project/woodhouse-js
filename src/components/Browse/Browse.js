@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Octicon, { ArrowUp, ArrowDown } from '@primer/octicons-react';
+import { ArrowUpIcon, ArrowDownIcon } from '@primer/octicons-react';
 
 import Parser from '../../lib/Parser';
 
@@ -120,12 +120,12 @@ class Browse extends Component {
           </div>
           <div className="col-2 pr-1">
             <Link to={`/b/${previous}`} className="btn btn-primary btn-block">
-              <Octicon icon={ArrowUp} />
+              <ArrowUpIcon />
             </Link>
           </div>
           <div className="col-2 pl-1">
             <Link to={`/b/${next}`} className="btn btn-primary btn-block">
-              <Octicon icon={ArrowDown} />
+              <ArrowDownIcon />
             </Link>
           </div>
         </div>
@@ -153,6 +153,5 @@ Browse.propTypes = {
   history: historyType.isRequired,
   match: matchType.isRequired,
 };
-
 
 export default Browse;

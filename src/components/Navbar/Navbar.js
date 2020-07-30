@@ -61,5 +61,4 @@ Navbar.propTypes = {
   match: matchType.isRequired,
 };
 
-
 export default Navbar;
