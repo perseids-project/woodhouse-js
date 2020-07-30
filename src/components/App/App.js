@@ -11,6 +11,7 @@ const App = () => (
     <PerseidsFooter
       github="https://github.com/perseids-project/woodhouse-js"
       report="https://github.com/perseids-project/woodhouse-js/issues"
+      doi="10.5281/zenodo.3967885"
     />
   </>
 );
