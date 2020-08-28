@@ -32,14 +32,14 @@ const Router = ({ basename, dictionary }) => (
               <h1 className="h3 pt-4 mb-1 font-weight-normal">
                 <I18n t="header.title" />
               </h1>
-              <h4 className="h5 mb-2 font-weight-normal">
+              <h2 className="h5 mb-2 font-weight-normal">
                 <em>
                   <I18n t="header.subtitle" />
                 </em>
-              </h4>
-              <h5 className="h5 mb-3 font-weight-normal">
+              </h2>
+              <h3 className="h5 mb-3 font-weight-normal">
                 <I18n t="header.author" />
-              </h5>
+              </h3>
             </header>
           )}
         />
@@ -117,14 +117,14 @@ class AsyncRouter extends Component {
                     <h1 className="h3 pt-4 mb-1 font-weight-normal">
                       <I18n t="header.title" />
                     </h1>
-                    <h4 className="h5 mb-2 font-weight-normal">
+                    <h2 className="h5 mb-2 font-weight-normal">
                       <em>
                         <I18n t="header.subtitle" />
                       </em>
-                    </h4>
-                    <h5 className="h5 mb-3 font-weight-normal">
+                    </h2>
+                    <h3 className="h5 mb-3 font-weight-normal">
                       <I18n t="header.author" />
-                    </h5>
+                    </h3>
                   </header>
                 )}
               />

@@ -4,15 +4,15 @@ import styles from './Preface.module.css';
 
 const Preface = () => (
   <div className={`${styles.prefaceContainer}`}>
-    <h6>
+    <h1 className="h6">
       S.C. WOODHOUSE, M.A. LATE SCHOLAR OF CHRIST CHURCH, OXFORD
-    </h6>
-    <h6>
+    </h1>
+    <h2 className="h6">
       LONDON GEORGE ROUTLEDGE &amp; SONS, Limited BROADWAY HOUSE, LUDGATE HILL, E. C. 1910
-    </h6>
-    <h5 className="pt-3">
+    </h2>
+    <h3 className="pt-3 h5">
       PREFACE
-    </h5>
+    </h3>
     <p>
       The ENGLISH-GREEK LEXICON here presented contains features which, I trust, will render it
       acceptable both to teachers and to learners. The vocabulary has been compiled from Attic
@@ -99,9 +99,9 @@ const Preface = () => (
     </p>
     <br />
     <br />
-    <h5>
+    <h4 className="h5">
       LIST OF ABBREVIATIONS
-    </h5>
+    </h4>
     <table className="table">
       <tbody>
         <tr>
@@ -319,9 +319,9 @@ const Preface = () => (
       </tbody>
     </table>
     <br />
-    <h5>
+    <h4 className="h5">
       Titles of Æschylus’ Plays.
-    </h5>
+    </h4>
     <table className="table">
       <tbody>
         <tr>
@@ -355,7 +355,9 @@ const Preface = () => (
       </tbody>
     </table>
     <br />
-    <h5>Titles of Aristophanes’ Plays.</h5>
+    <h4 className="h5">
+      Titles of Aristophanes’ Plays.
+    </h4>
     <table className="table">
       <tbody>
         <tr>
@@ -401,7 +403,9 @@ const Preface = () => (
       </tbody>
     </table>
     <br />
-    <h5>Titles of Euripides’ Plays.</h5>
+    <h4 className="h5">
+      Titles of Euripides’ Plays.
+    </h4>
     <table className="table">
       <tbody>
         <tr>
@@ -479,7 +483,9 @@ const Preface = () => (
       </tbody>
     </table>
     <br />
-    <h5>Titles of Sophocles’ Plays.</h5>
+    <h4 className="h5">
+      Titles of Sophocles’ Plays.
+    </h4>
     <table className="table">
       <tbody>
         <tr>
@@ -513,7 +519,9 @@ const Preface = () => (
       </tbody>
     </table>
     <br />
-    <h5>Titles of Plato’s Dialogues.</h5>
+    <h4 className="h5">
+      Titles of Plato’s Dialogues.
+    </h4>
     <table className="table">
       <tbody>
         <tr>
